@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv = "refresh" content = "5; url = /" />
+
+  <title>SNS Banking Limited</title>
+  <link rel="icon" href="images/LogoMini.png">
+
+  <!--Bootstrap CDN-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="main.css">
+  <!--Login Form CSS - custom-->
+  <link rel="stylesheet" href="signup_form.css">
+  <link rel="stylesheet" href="login_form.css">
+  <link rel="stylesheet" href="success_card.css">
+</head>
+<body>
+<div class="login-root">
+  <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+    <div class="loginbackground box-background--white padding-top--64">
+      <div class="loginbackground-gridContainer">
+        <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+          <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+          </div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+          <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+          <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+          <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+          <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+          <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+          <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+          <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+          <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+      <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+        <h1>
+          <img src="images/LogoMini.png">
+          <a href="/" rel="dofollow">SNS Canada Banking Ltd.</a>
+        </h1>
+      </div>
+      <div class="formbg-outer">
+        <div class="formbg">
+          <div class="formbg-inner padding-horizontal--48">
+            <div id="card">
+              <div style="border-radius:200px; height:200px; width:200px; background: rgba(14,7,28,0.07); margin:0 auto;">
+                <i id="success-card-i" class="checkmark">&#10003;</i>
+              </div>
+              <h1 id="success-card-h1">Success</h1>
+              <p id="success-card-p">
+                <b><span style="font-size: x-large;">Registration Successful!</span> </b>
+                <br> You will be redirected to sign in page in next 5 seconds.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-link padding-top--24">
+          <span>Have an account? <a href="login.html">Sign in</a></span>
+          <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+            <span><a href="./login.html">© Sebastien-Nathan-Suman Canadian Banking Limited.</a></span>
+            <span><a href="#">Contact</a></span>
+            <span><a href="#">Privacy & terms</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

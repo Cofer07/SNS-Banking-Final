@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SNS Banking Limited</title>
+  <link rel="icon" href="/images/LogoMini.png">
+
+  <!--Bootstrap CDN-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+  <!--jquery cdn-->
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="table.css">
+  <link rel="stylesheet" href="profileCard.css">
+</head>
+<body>
+<header>
+  <a href="dashboard" class="logo"><img src="/images/LogoMini.png" style="width: 50px; height: 50px; justify-self: center;">SNS Banking Limited</a>
+  <div class="mean-toggle"></div>
+  <nav>
+    <ul>
+      <li><a href="dashboard">Home</a></li>
+      <li><a href="history">Transaction History</a></li>
+      <li><a href="money_transfer" >Money Transfer</a></li>
+      <li><a href="profile" class="active">Profile</a></li>
+      <li><a href="login">Logout</a></li>
+      <!--                <li><a href="#">Portfolio</a></li>-->
+      <!--                <li><a href="#">Contact</a></li>-->
+    </ul>
+  </nav>
+  <div class="clear"></div>
+</header>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <div class="avatar">
+        <!--             <div class="user-online-indicator"></div> -->
+        <img
+                src="/images/avatar.png"
+                alt="user-image"
+        />
+      </div>
+      <div class="profile-name"><h1>[[${user.fname}]] [[${user.lname}]]</h1></div>
+      <div class="profile-role">
+        <p><b>Email: </b>[[${user.email}]]</p>
+      </div>
+      <div class="profile-role">
+        <p><b>Phone: </b>[[${user.phoneNum}]]</p>
+      </div>
+      <div class="profile-role">
+        <p>Member Since 2022</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"></script>
+<script>
+  let box = gsap.timeline();
+
+  console.log("New");
+
+  box.from(".card", {
+    stagger: 0.2,
+    opacity: 0,
+    x: -20,
+  });
+
+  box.from(".avatar img", {
+    stagger: 0.2,
+    opacity: 0,
+    y: 20,
+  });
+
+  // box.from(".user-online-indicator",{
+  //   stagger: 0.2,
+  //   opacity: 0,
+  //   y: 20,
+  // })
+  box.from(".profile-name",{
+    stagger: 0.2,
+    opacity: 0,
+    y: 20,
+  })
+  box.from(".profile-role",{
+    stagger: 0.2,
+    opacity: 0,
+    y: 20,
+  })
+
+  box.from(".social-buttons",{
+    stagger: 0.2,
+    opacity: 0,
+  })
+</script>
+</body>
+</html>

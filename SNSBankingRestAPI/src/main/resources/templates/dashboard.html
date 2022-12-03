@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SNS Banking Limited</title>
+    <link rel="icon" href="Logo%20Mini.png">
+
+    <!--Bootstrap CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!--jquery cdn-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="table.css">
+</head>
+
+<style>
+</style>
+<body>
+<header>
+    <a href="dashboard" class="logo"><img src="images/LogoMini.png" style="width: 50px; height: 50px; justify-self: center;">SNS Banking Limited</a>
+    <div class="mean-toggle"></div>
+    <nav>
+        <ul>
+            <li><a href="dashboard">Home</a></li>
+            <li><a href="history">Transaction History</a></li>
+            <li><a href="money_transfer">Money Transfer</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="login">Logout</a></li>
+            <!--                <li><a href="#">Portfolio</a></li>-->
+            <!--                <li><a href="#">Contact</a></li>-->
+        </ul>
+    </nav>
+    <div class="clear"></div>
+</header>
+
+<div class="row">
+    <div class="col-12 col-md-8">
+        <div>
+            <div class="container">
+                <h2>Account's Details</h2>
+                <ul class="responsive-table">
+                    <li class="table-header">
+                        <div class="col col-1">Account Number</div>
+                        <div class="col col-2">Account Type</div>
+                        <div class="col col-3">Balance</div>
+                    </li>
+                    <li class="table-row" th:each="account: ${listAccounts}">
+                        <div  class="col col-1" th:text="${account.accountid}"></div>
+                        <div class="col col-2" th:text="${account.type}"></div>
+                        <div class="col col-3" th:text="${account.balance}"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="container">
+                <h2>Recent Transactions</h2>
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Date</th>
+                        <th>Sending Account</th>
+                        <th>Receiving Account</th>
+                        <th>Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="transaction: ${listTransactions}">
+                        <td th:text="${transaction.date}">Date</td>
+                        <td th:text="${transaction.sendingAccount?.accountid}">Sending account</td>
+                        <td th:text="${transaction.receivingAccount?.accountid}">Receiving account</td>
+                        <td th:text="${transaction.amount}">Amount</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <!--            <div class="card" style="position: sticky; top: 0;">-->
+        <!--                <img src="img_avatar.png" alt="Avatar" style="width:100%; border-radius: 50%; padding: 10px;">-->
+        <!--                <div class="container">-->
+        <!--                    <h4><b>Suman Dep Nath</b></h4>-->
+        <!--                    <dl>-->
+        <!--                        <dt>Address:</dt>-->
+        <!--                        <dd>4 - 112 Queen Street, Saint John, New Brunswick, E2L 1S4</dd>-->
+        <!--                        <dt>Phone Number: </dt>-->
+        <!--                        <dd>(506) 898 2609</dd>-->
+        <!--                        <dt>Email:</dt>-->
+        <!--                        <dd>sumandepnath7@gmail.com</dd>-->
+        <!--                    </dl>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <div class="card" style="position: sticky; top: 0;padding: 20px;">
+            <form class="was-validated" th:action="@{/add_funds}" th:object="${Transaction}" method="post">
+                <h1 style="text-align: center;">Add Funds to Account</h1>
+                <label for="amt" class="form-label">Enter Amount</label><br>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input id="amt" type="number" name="Amount" placeholder="0.00" step=".01" class="form-control" th:field="*{amount}" required><br>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <label for="acc_select" class="form-label">Select Account</label><br>
+                <select id="acc_select" class="form-select" required th:field="*{recievingID}">
+                    <option th:each="account: ${listAccounts}" th:value="${account.accountid}" th:text="${account.accountid}"></option>
+                </select>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback"></div>
+                <input class="btn btn-secondary" type="submit" name="submit">
+            </form>
+        </div>
+
+        <div class="card" style="position: sticky; top: 0;padding: 20px;">
+            <h1 style="text-align: center;">Open New Account</h1>
+            <form th:action="@{/add_account}" th:object="${Account}" method="post" class="was-validated">
+                <div class="form-floating">
+                    <select id="account-type" class="form-select" th:field="*{type}" required>
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="Checking">Checking</option>
+                        <option value="Savings">Savings</option>
+                        <option value="Credit">Credit </option>
+                    </select>
+                    <label for="account-type">Account Type</label>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Please fill out this field</div>
+                </div>
+                <div class="form-floating">
+                    <input id="starting-amt" type="number" step="0.01" class="form-control" th:field="*{balance}" required>
+                    <label for="starting-amt">Starting Balance</label>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Please fill out this field</div>
+                </div>
+                <div class="d-grid">
+                    <button class="btn btn-primary btn-block" type="submit">Apply!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $('.mean-toggle').click(function()
+        {
+            $('.mean-toggle').toggleClass('active')
+            $('nav').toggleClass('active')
+        })
+    })
+</script>
+</html>
