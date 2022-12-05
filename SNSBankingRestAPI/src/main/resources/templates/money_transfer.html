@@ -2,73 +2,81 @@
 <html lang="en" xmlns:top="http://www.w3.org/1999/xhtml">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>SNS Banking Limited</title>
-  <link rel="icon" href="LogoMini.png">
+    <title>SNS Banking Limited</title>
+    <link rel="icon" href="Logo%20Mini.png">
 
-  <!--Bootstrap CDN-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <!--Bootstrap CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-  <!--jquery cdn-->
-  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!--jquery cdn-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="navbar.css">
-  <link rel="stylesheet" href="dashboard.css">
-  <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="table.css">
 </head>
 <body>
 <header>
-  <a href="dashboard" class="logo"><img src="/images/LogoMini.png" style="width: 50px; height: 50px; justify-self: center;">SNS Banking Limited</a>
-  <div class="mean-toggle"></div>
-  <nav>
-    <ul>
-      <li><a href="dashboard">Home</a></li>
-      <li><a href="history">Transaction History</a></li>
-      <li><a href="money_transfer" class="active">Money Transfer</a></li>
-      <li><a href="profile">Profile</a></li>
-      <li><a href="login">Logout</a></li>
-      <!--                <li><a href="#">Portfolio</a></li>-->
-      <!--                <li><a href="#">Contact</a></li>-->
-    </ul>
-  </nav>
-  <div class="clear"></div>
+    <a href="dashboard" class="logo"><img src="/images/LogoMini.png" style="width: 50px; height: 50px; justify-self: center;">SNS Banking Limited</a>
+    <div class="mean-toggle"></div>
+    <nav>
+        <ul>
+            <li><a href="dashboard">Home</a></li>
+            <li><a href="transaction_history">Transaction History</a></li>
+            <li><a href="money_transfer" class="active">Money Transfer</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="login">Logout</a></li>
+            <!--                <li><a href="#">Portfolio</a></li>-->
+            <!--                <li><a href="#">Contact</a></li>-->
+        </ul>
+    </nav>
+    <div class="clear"></div>
 </header>
 
 
 
-  <div class="w3-container">
-          <div class="card" style="position: sticky; top: 0;padding: 20px;">
-          <h1> New Money Transfer</h1>
-          <form th:action="@{/process_transfer}" th:object="${Transaction}" method="post">
-              <div class="input-group">
-                  <label class="form-label" for="sending">Enter Sending Account Number</label>
-                  <select id="sending" class="form-select" required th:field="*{sendingID}">
-                      <option th:each="account: ${listAccounts}" th:value="${account.accountid}" th:text="${account.accountid}"></option>
-                  </select>
-                  <label for="amt" class="form-label">Enter Amount</label>
-                  <input id="amt" type='number' th:field="*{amount}" placeholder='0.00' />
-                  <label for="receiving"class="form-label">Enter Receiving Account Number</label>
-                  <input id="receiving" type='number' th:field="*{recievingID}" placeholder="Receiving Account Number"/>
-                  <div class='d-grid'>
-                      <input class='btn btn-secondary btn-block' name="submit" type="submit">
-                  </div>
-              </div>
-          </form>
+<div class="w3-container">
+    <div class=\"card\" style=\"position:sticky">
+        <h1> New Money Transfer</h1>
+        <form th:action="@{/process_transfer}" th:object="${Transaction}" method="post" class="was-validated">
+            <div class="form-floating">
+                <input id="frAcc" type='number' th:field="*{sendingID}" class="form-control" required/>
+                <label class="form-label" for="frAcc">From Account Number</label>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-floating">
+                <input id="sAmt" type='number' th:field="*{amount}" placeholder='0.00' required class="form-control"/>
+                <label for="sAmt" class="form-label">Sending Amount</label>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-floating">
+                <input id="rcvAcc" type='number' th:field="*{recievingID}" required class="form-control"/>
+                <label for="rcvAcc" class="form-label">Receiving Account Number</label>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class='d-grid'>
+                <input class='btn btn-secondary btn-block' name="submit" type="submit">
+            </div>
+        </form>
 
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </body>
